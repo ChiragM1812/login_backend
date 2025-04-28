@@ -1,7 +1,13 @@
 package com.springboot.login.controller;
 
+import com.springboot.login.dto.ManagerLoginDTO;
+import com.springboot.login.entity.Manager;
 import com.springboot.login.service.ManagerService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,7 +18,13 @@ public class ManagerController {
     private ManagerService managerService;
 
     @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password) {
-        return managerService.loginManager(email, password);
+    public String login(@RequestBody ManagerLoginDTO loginDTO) {
+        return managerService.loginManager(loginDTO);
+    }
+    
+    @GetMapping("/all")
+    public ResponseEntity<List<Manager>> getAllManagers() {
+        List<Manager> managers = managerService.getAllManagers();
+        return ResponseEntity.ok(managers);
     }
 }
