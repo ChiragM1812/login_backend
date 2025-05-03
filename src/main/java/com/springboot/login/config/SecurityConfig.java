@@ -25,7 +25,13 @@ public class SecurityConfig {
 	                "/customer/all",
 	                "/admin/all",
 	                "/manager/all",
-	                "/admin/create-manager" 
+	                "/admin/create-manager",
+	                "/manager/hotel/add",
+	                "/manager/hotel/view",
+	                "/manager/hotel/update/by-id/**",
+	                "/manager/hotel/update/by-name",
+	                "/manager/hotel/delete/by-id/**",
+	                "/manager/hotel/delete/by-name"
 	            ).permitAll()
 	            .anyRequest().authenticated()
 	        );
@@ -34,6 +40,6 @@ public class SecurityConfig {
     
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();  // <<<<<< ADD THIS
+        return new BCryptPasswordEncoder();
     }
 }
