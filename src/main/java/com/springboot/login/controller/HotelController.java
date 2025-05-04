@@ -103,5 +103,10 @@ public class HotelController {
         hotelRepository.delete(hotelOpt.get());
         return "Hotel deleted successfully!";
     }
+    
+    @GetMapping("/all")
+    public List<Hotel> getAllHotels() {
+        return hotelRepository.findAll();
+    }
 
 }

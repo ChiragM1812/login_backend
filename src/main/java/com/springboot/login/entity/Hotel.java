@@ -1,5 +1,9 @@
 package com.springboot.login.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -7,8 +11,7 @@ import jakarta.persistence.*;
 public class Hotel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hotel_id")
+    @Column(name = "hotel_id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "name", nullable = false, unique = true)
@@ -29,6 +32,10 @@ public class Hotel {
     @ManyToOne
     @JoinColumn(name = "manager_id", nullable = false)
     private Manager manager;
+    
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<Room> rooms;
 
     // Getters and Setters
     public Long getId() {
@@ -85,5 +92,13 @@ public class Hotel {
 
     public void setManager(Manager manager) {
         this.manager = manager;
+    }
+    
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
     }
 }

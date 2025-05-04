@@ -31,7 +31,12 @@ public class SecurityConfig {
 	                "/manager/hotel/update/by-id/**",
 	                "/manager/hotel/update/by-name",
 	                "/manager/hotel/delete/by-id/**",
-	                "/manager/hotel/delete/by-name"
+	                "/manager/hotel/delete/by-name",
+	                "/manager/hotel/all",
+	                "/manager/room/add",
+	                "/manager/room/view",
+	                "/manager/room/update/**",
+	                "/manager/room/delete/**"
 	            ).permitAll()
 	            .anyRequest().authenticated()
 	        );
