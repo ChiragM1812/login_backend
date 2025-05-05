@@ -35,7 +35,7 @@ public class RoomController {
         if (hotelOpt.isEmpty()) return "Hotel not found!";
 
         Hotel hotel = hotelOpt.get();
-        if (!hotel.getManager().getEmail().equals(email)) return "Unauthorized access!";
+//        if (!hotel.getManager().getEmail().equals(email)) return "Unauthorized access!";
 
         room.setHotel(hotel);
         roomRepository.save(room);
