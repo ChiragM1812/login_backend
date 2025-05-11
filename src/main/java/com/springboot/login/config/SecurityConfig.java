@@ -36,7 +36,11 @@ public class SecurityConfig {
 	                "/manager/room/add",
 	                "/manager/room/view",
 	                "/manager/room/update/**",
-	                "/manager/room/delete/**"
+	                "/manager/room/delete/**",
+	                "/customer/hotels",
+	                "/customer/hotels/search",
+	                "/customer/hotels/rooms",
+	                "/customer/hotels/rooms/filter"
 	            ).permitAll()
 	            .anyRequest().authenticated()
 	        );
